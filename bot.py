@@ -60,6 +60,7 @@ def inline_handler(call):
             question, answer = faq_list[index]
             bot.send_message(call.message.chat.id, f"💬 *{question}*\n\n{answer}", parse_mode="Markdown")
     elif call.data in ["dept_prog", "dept_sales"]:
-        bot.answer_callback_query(call.id, "Coming soon")
+        # Отправляем как обычное сообщение, а не alert
+        bot.send_message(call.message.chat.id, "Coming soon")
 
 bot.polling(none_stop=True)
